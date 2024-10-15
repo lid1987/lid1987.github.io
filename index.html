@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>赶趟巴士</title>
+    <script src="./jQuery/jQuery-2.1.4.min.js"></script>
+    
+    <script type="text/javascript" src="./jquery.qrcode.min.js"></script>
+  </head>
+  <body>
+    <style type="text/css">
+      .QRCodeDIv {
+        text-align: center;
+        margin-top: 38%;
+      }
+      .text {
+        color: grey;
+        font-size: 14px;
+      }
+    </style>
+
+    <script type="text/javascript">
+      let pId = "335822";
+      $(function () {
+        $("#qrcode").html("");
+        $("#qrcode").qrcode({
+          width: 200,
+          height: 200,
+          correctLevel: 0,
+          text: "QRCODE" + new Date().getTime() + pId,
+        });
+      });
+      var refreshCode = function(){
+        location.reload();
+      }
+    </script>
+
+    <!--二维码区域-->
+    <div class="QRCodeDIv">
+      <div class="iQRcode" style="text-align: center; margin-top: 36px">
+        <div class="modal-body" id="qrcode"></div>
+      </div>
+      <p class="text">凭二维码扫码验票上车</p>
+      <p id="qrcodeText"></p>
+      <button onclick="refreshCode()">刷新二维码</button>
+    </div>
+  </body>
+</html>
